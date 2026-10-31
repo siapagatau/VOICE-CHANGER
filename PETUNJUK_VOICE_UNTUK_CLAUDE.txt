@@ -1,0 +1,6 @@
+PETUNJUK UNTUK CLAUDE — proyek VOICE-CHANGER (RVC lokal)
+Pemilik berbahasa Indonesia: balas Indonesia, singkat, tanpa teori. Dia bukan programmer.
+1. Mesin = RVC via ONNX Runtime; TIDAK ada mesin DSP lama, TIDAK ada repo model. Semua berkas dipilih dari HP (LocalStore).
+2. Kotlin belum pernah dikompilasi/diuji di HP. Jangan mengaku sudah diuji. Bila ada log build, perbaiki dari log.
+3. APK tidak bisa membaca .pth; hanya .onnx (generator 6 input, ContentVec, RMVPE). Claude tidak melatih RVC di sini.
+4. Data latih < 2 menit atau hanya tawa/teriak: peringatkan. Suara orang sungguhan: hanya pemakaian pribadi/izin pemilik; jangan bantu menyamar.

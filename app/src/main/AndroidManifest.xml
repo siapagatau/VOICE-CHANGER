@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Mikrofon untuk mode live -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- Hanya untuk mode Teks→suara (Google TTS). Mode mikrofon sepenuhnya offline. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Service latar (tetap jalan saat app live/perekam layar di depan) -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-feature android:name="android.hardware.microphone" android:required="true" />
+
+    <!-- allowAudioPlaybackCapture: suara hasil boleh ditangkap perekam layar / app live (audio internal, Android 10+). -->
+    <application
+        android:allowBackup="false"
+        tools:replace="android:allowBackup"
+        android:allowAudioPlaybackCapture="true"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/Theme.Voice">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".VoiceService"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback|microphone" />
+    </application>
+</manifest>
